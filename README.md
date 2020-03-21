@@ -79,3 +79,8 @@ used for statefull components
  used for logo and more
 ## hoc folder
  High Order Components - Components that wrap other components and add some functionality. (e.g Aux component)
+
+ ### Notes
+ ## CSS Modules
+ I am using CSS Modules in this project, therefore i am namig the css file with .module extension (e.g Layout.module.css).
+ The motiviation for using this pattern is to avoid css namig clash. More details [here](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/) 
