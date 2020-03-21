@@ -75,3 +75,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 used for statefull components
 ## components folder 
  used for stateless / dumb containers
+## assets folder
+ used for logo and more
+## hoc folder
+ High Order Components - Components that wrap other components and add some functionality. (e.g Aux component)
