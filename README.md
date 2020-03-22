@@ -23,6 +23,31 @@ used for statefull components
 
 ### Style
 ## ClassBased Components
-    class Example extends React..
+    *   class Example extends React..
+    *   this.props
 ## Functional Components
-    class example = (props) => {}...
+    *   class example = (props) => {}...
+
+
+### CSS
+## font-size based on rem 
+    1 rem is the default user's font, so 1.2 will be litle bit bigger
+## @media
+    used for style the app for differemt devices such mobile
+
+### React Basics
+## Initialize state
+    there some variants for doing this.
+    #
+    class Example extends Component {
+        constructor(props) {
+            super(props);
+            this.state = {...}
+        }
+    }
+    #
+    class Example extends Component {
+        state = {
+            
+        }
+    }
