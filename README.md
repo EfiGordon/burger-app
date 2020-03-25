@@ -51,3 +51,8 @@ used for statefull components
             
         }
     }
+    #
+    The Functional way (TBC)
+##  Improve Performance
+    # Sometimes i am using the shouldComponentUpdate to check if some props were changed, this check saves perforemance due to avoiding of updating the virtual dom.
+    # Alternativly we can extend PureComponent which handles the shouldComponentUpdate method for us.
