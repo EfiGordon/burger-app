@@ -56,3 +56,14 @@ used for statefull components
 ##  Improve Performance
     # Sometimes i am using the shouldComponentUpdate to check if some props were changed, this check saves perforemance due to avoiding of updating the virtual dom.
     # Alternativly we can extend PureComponent which handles the shouldComponentUpdate method for us.
+## Component Lifecycle Methods
+    For best performance we use hooks/lifecycle (free up resources and control rendering and optimization)
+    There are two ways for implementing react hooks - Class based approach and functional based approach (React hooks)
+    The Class Based [Approach](https://reactjs.org/docs/state-and-lifecycle.html) main methods are:
+    - The componentDidMount() method runs after the component output has been rendered to the DOM
+    It is best place for doing things that cause side effects such as http requests.
+    - There is as well method componentDidUpdate() which is a good place for http requests, this method is used in case that the component is already exists.
+
+## Key property
+    When React renders an array, React expects to get a key property for each element, for optimazion and controlling.
+    example:  const posts = this.state.posts.map(post => <Post key={postData.id} postData={post}/>);
