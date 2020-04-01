@@ -10,6 +10,11 @@ used for statefull components
  used for logo and more
 ## hoc folder
  High Order Components - Components that wrap other components and add some functionality. (e.g Aux component)
+ There are two ways of doing that:
+ 1) <someHocComponent> <ContentComponent/> </someHocComponent>
+ 2) export default someHocComponent(ContentComponent)
+ 
+ When using the second approach the convention is to name the hoc file like this: With<HOC>Handler (e.g withErrorHandler)
 
  ### Notes
  ## CSS Modules
@@ -67,3 +72,7 @@ used for statefull components
 ## Key property
     When React renders an array, React expects to get a key property for each element, for optimazion and controlling.
     example:  const posts = this.state.posts.map(post => <Post key={postData.id} postData={post}/>);
+
+#   Lazy Loading - TBC
+
+#   Routing - used by react-router-dom

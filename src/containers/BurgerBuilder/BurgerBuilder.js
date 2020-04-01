@@ -76,36 +76,40 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        this.setState({loading: true});
-        // alert('You continue');
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'EG',
-                address: {
-                    street: 'Menahem Begin',
-                    zipCode: '5454',
-                    country: 'Israel'
-                },
-                email: 'test@test.com'
-            },
-            deliveryMethod: 'fastest'
-        }
+        // this.setState({loading: true});
+        // // alert('You continue');
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: 'EG',
+        //         address: {
+        //             street: 'Menahem Begin',
+        //             zipCode: '5454',
+        //             country: 'Israel'
+        //         },
+        //         email: 'test@test.com'
+        //     },
+        //     deliveryMethod: 'fastest'
+        // }
 
-        axios.post('/orders.json', order)
-        .then((response) => {
-            this.setState({loading: false, purchasing: false});
-            console.log(response);
-        })
-        .catch((error) => {
-            this.setState({loading: false, purchasing: false});
-            console.log(error);
-        })
+        // axios.post('/orders.json', order)
+        // .then((response) => {
+        //     this.setState({loading: false, purchasing: false});
+        //     console.log(response);
+        // })
+        // .catch((error) => {
+        //     this.setState({loading: false, purchasing: false});
+        //     console.log(error);
+        // })
+
+        this.props.history.push('/checkout');
 
     }
 
     componentDidMount() {
+        console.log(this.props.history);
+
         axios.get('/ingredients.json')
         .then((response) => {
             //console.log({data_componentDidMount: data})

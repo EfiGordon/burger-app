@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+import { withRouter } from 'react-router-dom'; //Although we can pass the history prop, here we use an Higer Order Component to extract the history prop.
+
 const burger = (props) => {
     // The ingredients that passed by the BurgerBuilder is an object (props.ingredeints) therefore we  want to convert it to an array
     const transformedIngredientsKeys = Object.keys(props.ingredients); // ["salad", "cheese", ...]
@@ -28,4 +30,4 @@ const burger = (props) => {
     );
 }
 
-export default burger;
+export default withRouter(burger);
