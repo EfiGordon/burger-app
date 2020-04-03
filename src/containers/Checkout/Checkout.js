@@ -14,7 +14,7 @@ class Checkout extends Component {
         const ingredients = {};
         let price = 0;
         for (let param of query.entries()) {
-            if(param[0] === 'totalProce') {
+            if(param[0] === 'totalPrice') {
                 price = param[1];
             } else {
                 ingredients[param[0]] = +param[1];

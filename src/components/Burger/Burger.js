@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom'; //Although we can pass the histor
 const burger = (props) => {
     // The ingredients that passed by the BurgerBuilder is an object (props.ingredeints) therefore we  want to convert it to an array
     const transformedIngredientsKeys = Object.keys(props.ingredients); // ["salad", "cheese", ...]
+    console.log(transformedIngredientsKeys);
+    console.log(props.ingredients);
     let transformedIngredients= transformedIngredientsKeys.map(ingredientKey => {
         const sum = props.ingredients[ingredientKey];
         return [...Array(sum)].map((_, i) => {

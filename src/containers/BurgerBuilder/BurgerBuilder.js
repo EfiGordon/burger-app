@@ -115,6 +115,9 @@ class BurgerBuilder extends Component {
         }
         let orderSummary = null;
         let burger = this.state.error ? (<p> Ingredients cant be loaded </p>) : <Spinner />;
+        console.log({
+            ing: this.state.ingredients
+        })
         if (this.state.ingredients) {
             burger = (
                 <React.Fragment>
