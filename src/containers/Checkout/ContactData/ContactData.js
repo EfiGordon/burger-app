@@ -65,10 +65,15 @@ class ContactData extends Component {
         event.preventDefault();
         //console.log(this.props.ingredients);
         this.setState({ loading: true });
+        const formData = {};
+        for (let formElementIdentifier in this.state.orderForm) {
+            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
+        }
         // alert('You continue');
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.totalPrice,
+            orderData: formData
 
         }
 
@@ -91,7 +96,10 @@ class ContactData extends Component {
             ...this.state.orderForm
         };  
         /* 
-        Note: the spread operator does not copy deeply nested objectes, threfor we need to make additional use of this.
+        Note: the spread operator does not copy deeply nested objectes, threfor we need to make additional use of this. (because with nested objects it just copy its reference)
+        We do this beacause we dont want to mutate (change) the original state. so we want to change the value immutably, means - without modifying the original object.
+        #   https://gomakethings.com/mutable-vs.-immutable-in-javascript/
+
         */
         const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
         updatedFormElement.value = event.target.value;
@@ -113,7 +121,7 @@ class ContactData extends Component {
         }
 
         let form = (
-            <form>
+            <form onSubmit={this.orderHandler}>
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}
@@ -124,7 +132,7 @@ class ContactData extends Component {
                             this.inputChangedHandler(event, formElement.id)
                         }} />
                 ))}
-                <Button btnType="Success" clicked={this.orderHandler}> ORDER </Button>
+                <Button btnType="Success"> ORDER </Button>
             </form>
         );
         if (this.state.loading) {
