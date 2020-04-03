@@ -52,11 +52,11 @@ class ContactData extends Component {
             deliveryMethod: {
                 elementType: 'select',
                 elementConfig: {
-                    options: [{value: 'fastest', displayValue: 'Fastest'}, {value: 'cheapest', displayValue: 'Cheapest'}]
+                    options: [{ value: 'fastest', displayValue: 'Fastest' }, { value: 'cheapest', displayValue: 'Cheapest' }]
                 },
                 value: ''
             },
-        
+
         },
         loading: false
     }
@@ -84,9 +84,22 @@ class ContactData extends Component {
             })
     }
 
-    inputChangedHandler = (event) => {
-        //event.preventDefault();
-        console.log(event.target.value);
+    inputChangedHandler = (event, inputIdentifier) => {
+        // console.log(event.target.value);
+        // console.log(inputIdentifier);
+        const updatedOrderForm = {
+            ...this.state.orderForm
+        };  
+        /* 
+        Note: the spread operator does not copy deeply nested objectes, threfor we need to make additional use of this.
+        */
+        const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
+        updatedFormElement.value = event.target.value;
+        updatedOrderForm[inputIdentifier] = updatedFormElement;
+        this.setState({
+            orderForm: updatedOrderForm
+        })
+
     }
 
     render() {
@@ -100,14 +113,16 @@ class ContactData extends Component {
         }
 
         let form = (
-            <form>   
+            <form>
                 {formElementsArray.map(formElement => (
-                    <Input 
-                    key = {formElement.id}
-                    elementType={formElement.config.elementType} 
-                    elementConfig={formElement.config.elementConfig} 
-                    value={formElement.config.value}
-                    changed={this.inputChangedHandler} />
+                    <Input
+                        key={formElement.id}
+                        elementType={formElement.config.elementType}
+                        elementConfig={formElement.config.elementConfig}
+                        value={formElement.config.value}
+                        changed={(event) => {
+                            this.inputChangedHandler(event, formElement.id)
+                        }} />
                 ))}
                 <Button btnType="Success" clicked={this.orderHandler}> ORDER </Button>
             </form>
@@ -119,7 +134,7 @@ class ContactData extends Component {
             <div className={classes.ContactData}>
                 <h4>Enter Your Contact Data</h4>
                 {form}
-                
+
             </div>
         );
     }
