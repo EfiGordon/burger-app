@@ -5,7 +5,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './ContactData.module.css';
 import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
-
+import { connect } from 'react-redux';
 class ContactData extends Component {
     state = {
         orderForm: {
@@ -100,8 +100,8 @@ class ContactData extends Component {
         }
         // alert('You continue');
         const order = {
-            ingredients: this.props.ingredients,
-            price: this.props.totalPrice,
+            ingredients: this.props.ings,
+            price: this.props.price,
             orderData: formData
 
         }
@@ -118,8 +118,8 @@ class ContactData extends Component {
             })
     }
 
-    checkValidity(value, rules)  {
-        if(!rules) return true; // If there is no validation rules.
+    checkValidity(value, rules) {
+        if (!rules) return true; // If there is no validation rules.
 
         let isValid = true;
         if (rules.required) {
@@ -135,7 +135,7 @@ class ContactData extends Component {
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedOrderForm = {
             ...this.state.orderForm
-        };  
+        };
         /* 
         Note: the spread operator does not copy deeply nested objectes, threfor we need to make additional use of this. (because with nested objects it just copy its reference)
         We do this beacause we dont want to mutate (change) the original state. so we want to change the value immutably, means - without modifying the original object.
@@ -201,4 +201,11 @@ class ContactData extends Component {
 
 }
 
-export default ContactData;
+const mapStateToProps = state => {
+    return {
+        ings: state.ingredients,
+        price: state.totalPrice
+    }
+}
+
+export default connect(mapStateToProps)(ContactData);
