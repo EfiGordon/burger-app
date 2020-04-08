@@ -76,3 +76,5 @@ used for statefull components
 #   Lazy Loading - TBC
 
 #   Routing - used by react-router-dom
+
+#   redux
