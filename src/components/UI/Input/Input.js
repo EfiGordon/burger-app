@@ -5,6 +5,12 @@ const input = (props) => {
     let inputElement = null;
     const inputClasses = [classes.InputElement];
 
+    // console.log({
+    //     path: 'input.js',
+    //     invalid: props.invalid,
+    //     shouldValidate: props.shouldValidate,
+    //     touched: props.touched,
+    // })
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
     }
@@ -20,9 +26,9 @@ const input = (props) => {
                 <select onChange={props.changed}
                     className={inputClasses.join(' ')}
                     value={props.value}>
-                        {props.elementConfig.options.map(option => (
-                            <option key={option.value} value={option.value}>{option.displayValue}</option>
-                        ))}
+                    {props.elementConfig.options.map(option => (
+                        <option key={option.value} value={option.value}>{option.displayValue}</option>
+                    ))}
                 </select>);
             break;
         default:
@@ -31,7 +37,7 @@ const input = (props) => {
 
     return (
         <div className={classes.Input}>
-            <label className={classes.Label} >{props.label}</label>
+            <label className={classes.Label}> {props.label}</label>
             {inputElement}
         </div>
     )
