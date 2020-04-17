@@ -35,6 +35,15 @@ const reducer = (state = initialState, action) => {
 
         };
     }
+
+    if (action.type === actionTypes.AUTH_LOGOUT) {
+        return {
+            ...state,
+            token: null,
+            userId: null
+        };
+    }
+
     return state;
 }
 export default reducer;

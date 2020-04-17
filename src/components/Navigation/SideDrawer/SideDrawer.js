@@ -6,7 +6,7 @@ import Backdrop from '../../UI/Modal/Backdrop/Backdrop';
 
 const sideDrawer = (props) => {
     let attachedClasses = [classes.SideDrawer, classes.Close];
-    if(props.open) {
+    if (props.open) {
         attachedClasses = [classes.SideDrawer, classes.Open];
     }
     return (
@@ -17,7 +17,7 @@ const sideDrawer = (props) => {
                     <Logo />
                 </div>
                 <nav>
-                    <NavigationItems />
+                    <NavigationItems isAuthenticated={props.isAuth} />
                 </nav>
             </div>
         </React.Fragment>
