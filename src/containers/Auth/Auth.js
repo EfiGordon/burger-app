@@ -4,6 +4,7 @@ import classes from './Auth.module.css';
 import { Input, Button, Spinner } from '../../components/UI';
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
+import { checkValidity } from '../../shared/utility';
 class Auth extends Component {
     state = {
         controls: {
@@ -45,20 +46,7 @@ class Auth extends Component {
         }
     }
 
-    checkValidity(value, rules) {
-        //console.log("fff:", (value.length >= rules.minLength));
-        if (!rules) return true; // If there is no validation rules.
 
-        let valid = true;
-        if (rules.required) {
-            valid = value.trim() !== '' && valid;
-        }
-        if (rules.minLength) {
-            valid = (value.length >= rules.minLength) && valid;
-        }
-
-        return valid;
-    }
 
     inputChangedHandler = (event, controlName) => {
         const updatedControls = {
@@ -66,7 +54,7 @@ class Auth extends Component {
             [controlName]: {
                 ...this.state.controls[controlName],
                 value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+                valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true,
             }
 
