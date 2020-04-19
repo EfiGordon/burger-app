@@ -30,5 +30,11 @@ describe('This is description of the test. <NavigationItems />', () => {
         expect(wrapper.find(NavigationItem))
             .toHaveLength(3);
     });
+
+    it('should render logout button', () => {
+        //const wrapper = shallow(<NavigationItems isAuthenticated />)
+        wrapper.setProps({ isAuthenticated: true });
+        expect(wrapper.contains(<NavigationItem link="/logout">Logout</NavigationItem>)).toEqual(true);
+    });
 })
 
